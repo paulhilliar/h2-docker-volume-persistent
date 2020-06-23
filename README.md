@@ -1,9 +1,7 @@
-# h2-docker-volume-persistent
-
 Example of how to use Docker volumes to:
 - Run a [H2 database](https://www.h2database.com/) in server mode inside a docker container
 - Have the database server store its data files on the host machine
-- Connect to the database from 'outside'
+- Make a JDBC connection to the database from outside the docker container
 
 
 H2 typically runs in embedded (mem) mode for tests etc but it can run in in TCP server mode and also persist its data files to a `dbname.db` file using a different URL format (e.g. `jdbc:h2:~/test` to host the db files in `~/test`).
@@ -29,7 +27,7 @@ Notes about H2 startup options
 `-baseDir /usr/lib/h2` means that all databases will be created within `/usr/lib/h2`, which is the folder we have shared as the volume using `VOLUME /usr/lib/h2`
 and also mapped on container startup using `--volume $(pwd)/data:/usr/lib/h2`
 
-`-ifNotExists` is important because without this, H2 will not allow you to create new databases remotely
+`-ifNotExists` is important because without this, H2 will not allow you to create new databases remotely.
 
 
 ### Connecting a SQL client to the H2 database
