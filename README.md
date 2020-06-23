@@ -37,7 +37,7 @@ Use the URL: `jdbc:h2:tcp://localhost/./test-db` and the remaining defaults ('or
 
 This is telling the H2 driver to connect over the TCP to localhost:9092 (which is mapped to 9092 in the running container) and the server should use a file-based database `test-db`.
 
-The final portion of the URL (`./test-db`) tells H2 to persist the database to the default location (in h2.sh we set that to `-baseDir /usr/lib/h2`)
+The final portion of the URL (`./test-db`) tells H2 to persist the database to the default location (in run-h2-inside-container.sh we set that to `-baseDir /usr/lib/h2`)
 
 
 #### Test it out: 

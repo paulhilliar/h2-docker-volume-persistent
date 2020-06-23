@@ -5,7 +5,7 @@ FROM openjdk:8-jre-slim
 EXPOSE 8082
 EXPOSE 9082
 
-# Volume containing the H2 data
+# Share this volume containing the H2 data
 VOLUME /usr/lib/h2
 
 # H2 version
@@ -15,10 +15,10 @@ ENV H2_VERSION "1.4.200"
 ADD "https://repo1.maven.org/maven2/com/h2database/h2/${H2_VERSION}/h2-${H2_VERSION}.jar" /var/lib/h2/h2.jar
 
 # Startup script
-COPY h2.sh /var/lib/h2/
+COPY run-h2-inside-container.sh /var/lib/h2/
 
 # Rights
-RUN chmod u+x /var/lib/h2/h2.sh
+RUN chmod u+x /var/lib/h2/run-h2-inside-container.sh
 
 # Java options
 ENV JAVA_OPTIONS ""
@@ -27,4 +27,4 @@ ENV JAVA_OPTIONS ""
 ENV H2_OPTIONS ""
 
 # Entry point
-ENTRYPOINT ["/var/lib/h2/h2.sh"]
+ENTRYPOINT ["/var/lib/h2/run-h2-inside-container.sh"]
