@@ -43,22 +43,27 @@ The final portion of the URL (`./test-db`) tells H2 to persist the database to t
 #### Test it out: 
 
 sql> `create table person(id integer primary key, name varchar(100) not null);`
+
 sql> `insert into person (id,name) values (1, 'Bob');`
+
 sql> `select * from person;`
 
-Then see how your data folder now contains test-db.mv.db
+Then see how your data folder now contains `test-db.mv.db`
 
 
 ### Starting a shell to have a look at the running container
 `docker exec -it <container-name> /bin/bash`
 
 Try: `ls /usr/lib/h2`
-Note that you can see both your H2 database file (test-db.mv.db) and also test-file.txt, which you are sharing from the host machine 
+Note that you can see both your H2 database file (`test-db.mv.db`) and also `test-file.txt`, which you are sharing from the host machine 
 
 ```
 root@79846965307c:/# ls /usr/lib/h2
 test-db.mv.db  test-file.txt
 ```
+
+
+
 
 
 
